@@ -1,0 +1,14 @@
+atlassian-python-api
+pytesseract
+pdf2image
+Pillow
+pymilvus
+transformers
+torch
+docx2txt
+loguru
+requests
+slack_bolt
+slack-sdk[optional]
+llama_cpp_python
+llama_index
