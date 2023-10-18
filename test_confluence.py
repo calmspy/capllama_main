@@ -8,7 +8,9 @@ base_url = "https://capspire.atlassian.net/wiki"
 
 pprint(api_token)
 
-conf = Confluence(url=base_url, username="james.vogel@capspire.com", password=api_token, cloud=True)
+conf = Confluence(
+    url=base_url, username="james.vogel@capspire.com", password=api_token, cloud=True
+)
 
 page_id = "464748589"
 resp = conf.get_page_by_id(

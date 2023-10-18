@@ -1,6 +1,6 @@
 import gc
-from pprint import pprint
 from time import sleep
+import os
 
 from llama_hub.confluence.base import ConfluenceReader
 from loguru import logger
@@ -49,7 +49,9 @@ def ask(question: str) -> str:
     )
 
 
-app = App(token=bot_token)
+assert os.getenv("SLACK_BOT_TOKEN"), "SLACK_BOT_TOKEN not set in environment"
+
+app = App(token=os.environ["SLACK_BOT_TOKEN"])
 
 
 @app.event("app_mention")
@@ -78,7 +80,8 @@ def handle_mention(client, event, logger):
 
 
 if __name__ == "__main__":
-    # build_service_context()
+    build_service_context()
     # load_confluence_data()
-    handler = SocketModeHandler(app, app_token)
+    assert os.getenv("SLACK_APP_TOKEN"), "SLACK_APP_TOKEN not set in environment"
+    handler = SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"])
     handler.start()
